@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+{% set u_data=[] %}
+
+<h2>{% block title %}{% block title2 %}成果物の登録・編集の完了{% endblock %}{% endblock %}</h2>
+        <div class="center">
+        <p class="margin">成果物の登録・編集が完了しました。</p><br>
+        <a href="{{ url_for('mypage' ) }}">マイページへ</a>
+        </div>
+{% endblock %}

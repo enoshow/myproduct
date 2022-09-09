@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+{% set u_data=[] %}
+
+<h2>{% block title %}{% block title2 %}{{mess}}{% endblock %}{% endblock %}</h2>
+        <div class="center">
+        <a href="{{ url_for('mypage' ) }}">マイページへ</a>
+        </div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{% block title %}{% block title2 %}データ削除ページ{% endblock %}{% endblock %}</h2>
+
+        <div class="center">
+        <p>これらのデータを削除します。よろしいですか？</p><br>
+        
+        {% for ud in u_data %}
+        <table border="1" width="600" height="150">
+            <tr>
+                <th>成果物名</th>
+                <th>{{ ud[0] }}</th>
+            </tr>
+            <tr>
+                <th>紹介文</th>
+                <th>{{ ud[1] }}</th>
+            </tr>
+            <tr>
+                <th>code</th>
+                <th>{{ ud[2] }}</th>
+            </tr>
+            <tr>
+                <th>更新日時</th>
+                <th>{{ ud[3] }}</th>
+            </tr>
+            <tr>
+                <th>ファイル名</th>
+                <th>
+                    {% for s_fn in s_fname %}
+                    <a href="{{ url_for('download', f_data = ( ud[5] | string )+','+s_fn ) }}">{{s_fn}}</a> 
+                    {% endfor %}
+                </th>
+                <tr>
+                    <th>ファイルパス</th>
+                    <th>{{ ud[6] }}</th>
+                </tr>
+            </tr>
+            
+        </table><br>
+        {% endfor %}
+        <form class="form" method="post" >
+            <p></p><input type="submit" value="削除する" onclick="ClickDell();">
+        </form>
+        
+        <a href="{{ url_for('mypage') }}">キャンセルする（マイページに戻る）</a></li>
+        </div>
+{% endblock %}

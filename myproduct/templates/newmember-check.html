@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{% block title %}{% block title2 %} 新規登録完了{% endblock %}{% endblock %}</h2>
+
+        <div class="center">
+        <p>登録が完了しました。<br>登録内容は以下の通りです。大切に保存してください。</p><br>
+        
+        {% for ud in u_data %}
+        <table border="1" width="600" height="150">
+            <tr>
+                <th>ID</th>
+                <th>{{ ud[0] }}</th>
+            </tr>
+            <tr>
+                <th>ナンバー</th>
+                <th>{{ ud[1] }}</th>
+            </tr>
+            <tr>
+                <th>お名前</th>
+                <th>{{ ud[2] }}</th>
+            </tr>
+            <tr>
+                <th>生年月日</th>
+                <th>{{ ud[3] }}</th>
+            </tr>
+            <tr>
+                <th>メールアドレス</th>
+                <th>{{ ud[4] }}</th>
+            </tr>
+            <tr>
+                <th>メールアドレス（公開用）</th>
+                <th>{{ ud[5] }}</th>
+            </tr>
+            <tr>
+                <th>パスワード</th>
+                <th>{{ ud[6] }}</th>
+            </tr>
+        </table><br>
+        {% endfor %}
+        
+        <a href="{{ url_for('login') }}">ログインはこちら</a></li>
+        </div>
+{% endblock %}

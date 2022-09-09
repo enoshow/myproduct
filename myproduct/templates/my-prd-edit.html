@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{% block title %}{% block title2 %}成果物編集・再登録1{% endblock %}{% endblock %}</h2>
+{% for data in p_data %}
+    <form class="form" method="post">
+        <div class="item">
+            <p></p><label class="label_left" for="prd-name">成果物名</label><br>
+            <input type="text" name="p_name" size="40" maxlength ="200" value="{{name}}{{data[1]}}" equired><br>
+        </div>
+
+        <div class="item">
+            <p></p><label class="label_left" for="inst">紹介文 </label><br>
+            <!--<input type="text" name="text" maxlength ="500" value="{{text}}{{data[2]}}" size="40" ><br>-->
+            <textarea name="text" wrap="soft" cols="70" rows="7" maxlength ="500" >{{text}}{{data[2]}}</textarea><br>
+        </div>
+
+        <div class="item">
+            <p></p><label class="label_left" for="code">コード文 </label><br>
+            <!--<input type="text" name="code" value="{{code}}{{data[3]}}" size="40"><br>-->
+            <textarea name="code" wrap="soft" cols="70" rows="15" maxlength ="500" >{{code}}{{data[3]}}</textarea><br>
+        </div>
+        <div class="btns">
+            <input type="submit" value="次へ">
+        </div>
+    </form>
+{% endfor %}
+{% endblock %}

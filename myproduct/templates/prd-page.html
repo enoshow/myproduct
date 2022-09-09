@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>{% block title %}{% block title2 %}成果物詳細{% endblock %}{% endblock %}</h2>
+        <table border="1" width="700" height="150">
+            {% for prd in result %}
+            <tr>
+                <th>制作者</th>
+                <th>{{prd[0]}}</th>
+            </tr>
+            <tr>
+                <th>成果物名</th>
+                <th>{{prd[1]}}</th>
+            </tr>
+            <tr>
+                <th>説明</th>
+                <th>{{prd[2]}}</th>
+            </tr>
+            <tr>
+                <th>コード</th>
+                <th>{{prd[3]}}</th>
+            </tr>
+            <tr>
+                <th>ファイル</th>
+                <th>
+                    {% for s_fn in s_fname %}
+                    <a href="{{ url_for('download', f_data = ( prd[5] | string )+','+s_fn ) }}">{{s_fn}}</a> 
+                    {% endfor %}
+                </th>
+            </tr>
+            <tr>
+                <th>更新日時</th>
+                <th>{{prd[4]}}</th>
+            </tr>
+            {% endfor %}
+        </table>
+{% endblock %}

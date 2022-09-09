@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{% block title %}{% block title2 %}マイページ編集{% endblock %}{% endblock %}</h2>
+
+<!--   idなどの変数でうまく表示できるかはわからない　　　-->
+{% for data in u_data %}
+<p></p><form class="form" name="u_data_form" method="post">
+    <div class="item">
+        <label class="label_left" for="id">あなたのID </label><br>
+        <input type="text" name="id" size="20" maxlength="20" pattern="^[0-9a-zA-Z]+$" value="{{ id }}{{ data[0] }}" required><br><p></p>
+    </div>
+
+    <div class="item">
+        <label class="label_left" for="name">お名前 </label><br>
+        <input type="text" name="name" size="20" value="{{ name }}{{ data[1] }}" required><br><p></p>
+    </div>
+
+    <div class="item">
+        <label class="label_left" for="born">生年月日</label><br>
+        <input type="date" name="born" value="{{ born }}{{ data[4] }}" required><br><p></p>
+    </div>
+
+    <div class="item">
+        <label class="label_left" for="email">メールアドレス</label><br>
+        <input type="email" name="email" size="30" value="{{ email }}{{ data[2] }}" required><br><p></p>
+    </div>
+
+    <div class="item">
+        <label class="label_left" for="op-email">メールアドレス（公開用）</label><br>
+        <input type="email" name="op_email" size="30" value="{{ op_email }}{{ data[3] }}" required><br><p></p>
+    </div>
+
+    <div class="item">
+        <label class="label_left" for="passWord">パスワード </label><br>
+        <input type="password" name="passWord" minlength="6" value="{{ passWord }}{{ data[5] }}" required><br><p></p>
+    </div>
+
+    <div class="item">
+        <label class="label_left" for="name">紹介文 </label><br>
+        <!--<input type="text" name="text" size="20" value="{{ text }}{{ data[6] }}" required><br>-->
+        <textarea name="text" wrap="soft" cols="70" rows="7" maxlength ="500" >{{text}}{{ data[6] }}</textarea><br><p></p>
+    </div>
+
+    <div class="btns">
+        <input type="submit" value="再登録">
+    </div>
+        
+</form>
+{% endfor %}
+
+{% endblock %}

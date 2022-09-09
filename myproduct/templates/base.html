@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>成果物公開システム-{% block title %} {% endblock %} - FlaskApp</title>
+    <style>
+		body {
+  			background-color: #ffffe0;
+		}
+
+        h1{
+			font-size:30px;
+			background-color:#00af3a;
+			color:#ffffff;
+			padding:8px 14px;
+			text-align: center
+		}
+
+		ul{
+			/*ページすべてのリストの点を消す*/
+			list-style-type: none;		
+		}
+
+		.menu{
+			/*メニューバーを横並びに*/
+			display: flex;
+		}
+
+	
+		nav{
+			/*メニューバーの設定*/
+			width: 100%;
+			height: 70px;
+			background-color: dimgray;
+			padding-top: 5px;
+			box-sizing: border-box;
+		}
+
+		/*アンカー（リンク）の設定*/
+		.an {
+			display: block;
+			text-decoration: none;
+			color: white;
+			margin-right: 50px;
+		}
+		
+		/*ここからフォームの設定ーーーーーーーーーーーーーーーー*/
+		.form{
+			width: 35%;
+   			margin: auto;
+   			border: 1px solid #9c9c9c;
+   			padding: 100px;
+   			box-sizing: border-box;
+		}
+
+		.item{
+   			margin-bottom: 20px;
+			margin-left: auto;
+    		margin-right: auto;
+ 		}
+
+		.label_left{
+   			display: inline-block;
+   			width:60%;
+   			border-left: solid 5px #5250e0;
+   			padding-left: 15px;
+   			vertical-align:top;
+ 		}
+
+		.form input[type="text"], 
+		.form input[type="number"],
+		.form input[type="email"] ,
+		.form input[type="password"],
+		.form input[type="search"] {
+     		padding: 10px;
+     		width: 90%;
+ 		}
+
+		.form textarea{
+   			padding: 10px;
+   			height: 100px;
+   			font-size: 14px;
+   			width: 90%;
+ 		}
+
+		.form input[type="submit"]{
+   			background: #5250e0;
+   			color: white;
+   			font-size:16px;
+   			font-weight:bold;
+   			padding: 10px 20px;
+   			margin: 0 5px;
+ 		}
+
+		.btns{
+   			display: flex;
+   			justify-content: center;
+ 		}
+		/*ここまでフォームの設定ーーーーーーーーーーーーーーーーーーーーーーーーーー*/
+
+		.center{
+			text-align: center
+		}
+		.right{
+			text-align: right
+		}
+
+		h2{
+			text-align: center
+		}
+		table{
+			margin: auto;
+		}
+
+    </style>
+
+	<script language="javascript" type="text/javascript">
+		function OnButtonClick() {
+			alert( "この内容で登録します" );
+		}
+		function ClickLogout() {
+			alert( "ログアウトします" );
+		}
+		function ClickDell() {
+			alert( "削除します" );
+		}
+	</script>
+
+</head>
+<body>
+
+	<h1>成果物公開システム<br>-{% block title2 %}{% endblock %}-</h1>
+	<!--▼メニュー▼-->
+	<nav>
+		<ul class="menu">
+			<li><a class="an" href="{{ url_for('top') }}">TOP</a></li>
+			<li><a class="an" href="{{ url_for('search') }}">検索</a></li>
+			<li><a class="an" href="{{ url_for('newmember') }}">新規登録</a></li>
+			{% if uid == None %}
+			<li><a class="an" href="{{ url_for('login') }}">ログイン</a></li>
+			{% endif %}
+			{% if uid != None %}
+			<li><a class="an" href="{{ url_for('logout') }}" onclick="ClickLogout();">ログアウト</a></li>
+			<li><a class="an" href="{{ url_for('my_prd') }}">成果物登録</a></li>
+			<li><a class="an" href="{{ url_for('mypage') }}">マイページ</a></li>
+			<li><a class="an" href="{{ url_for('mypage_ed') }}">マイページ編集</a></li>
+			{% endif %}
+		</ul>
+	</nav>
+	<!--▲メニュー▲-->
+
+	{% if uid != None %}
+	<p class="right"><b>ID:{{uid}}</b><br>でログイン中</p>
+	{% endif %}
+
+	<p class="center">{{messege}}</p>
+	<p class="center">{{messege2}}</p>
+
+    {% block content %} {% endblock %}
+</body>
+</html>

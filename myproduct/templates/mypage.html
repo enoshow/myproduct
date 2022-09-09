@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{% block title %}{% block title2 %}マイページ{% endblock %}{% endblock %}</h2>
+
+
+        <h2>あなたの成果物</h2>
+
+        <table border="1" width="700" height="50">
+            <tr>
+                <th>制作者</th>
+                <th>作品名</th>
+                <th>更新日時</th>
+                <th></th>
+             </tr>
+            {% for prd in c_products %}
+                <tr>
+                    <th>{{ prd[2] }}</th>
+                    <th><a href="{{ url_for('prd', pid = ( prd[3] | string ) ) }}">{{ prd[0] }}</a></th>
+                    <th>{{ prd[1] }}</th>
+                    <th><a href="{{ url_for('prd_ed', pid = ( prd[3] | string ) ) }}">編集する</a></th>
+                    <th><a href="{{ url_for('delete', pid = ( prd[3] | string ) ) }}">削除する</a></th>
+                 </tr>
+            {% endfor %}
+        </table>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h2>{% block title %}{% block title2 %}作品登録2{% endblock %}{% endblock %}</h2>
+    <p class="center">
+        アップロードするファイルの名前は、必ず英数字でお願いします。<br>
+        日本語だと、ファイル名が消えてしまいます。ご了承ください。
+    </p>
+
+    <p></p><table border="1" width="700" height="50">
+        <tr>
+            <th>成果物名</th>
+            <th>{{name}}</th>
+         </tr>
+         <tr>
+            <th>紹介文</th>
+            <th>{{text}}</th>
+         </tr>
+         <tr>
+            <th>コード文</th>
+            <th>{{code}}</th>
+         </tr>
+    </table>
+    <p></p>
+    <form class="form" method="post" enctype="multipart/form-data" >
+
+        <label for="file">ファイル</label>
+        <input type=file multiple="" name="file"><br>
+
+        <p></p><input type="submit" value="登録">
+    </form>
+
+{% endblock %}

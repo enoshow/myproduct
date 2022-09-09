@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{% block title %}{% block title2 %}成果物編集・再登録2{% endblock %}{% endblock %}</h2>
+<p class="center">
+    ※再登録ボタンを押すと、前回保存されたファイルはすべて削除されます。<br>
+    前回と同じファイルを保存したい場合は、一度ここに表示されているファイルをダウンロードし、アップロードしなおしてください。</p>
+<p class="center">
+    アップロードするファイルの名前は、必ず英数字でお願いします。<br>
+    日本語だと、ファイル名が消えてしまいます。ご了承ください。
+</p>
+        
+<p></p><table border="1" width="700" height="50">
+    <tr>
+        <th>成果物名</th>
+        <th>{{name}}</th>
+     </tr>
+     <tr>
+        <th>紹介文</th>
+        <th>{{text}}</th>
+     </tr>
+     <tr>
+        <th>コード文</th>
+        <th>{{code}}</th>
+     </tr>
+     <tr>
+        <th>ファイル</th>
+        <th>{% for prd in result %}
+            {% for s_fn in s_fname %}
+            <a href="{{ url_for('download', f_data = ( prd[5] | string )+','+s_fn ) }}">{{s_fn}}</a> 
+            {% endfor %}
+            {% endfor %}
+        </th>
+    </tr>
+</table>
+<p></p>
+<form class="form" method="post" enctype="multipart/form-data" >
+    <div class="item">
+        <label class="label_left" for="file">ファイル</label>
+        <input type=file multiple="" name="file"><br>
+    </div>
+    
+    <div class="btns">
+        <p></p><input type="submit" value="再登録" onclick="OnButtonClick();">
+    </div>
+</form>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+        <h2>{% block title %}{% block title2 %}ログイン{% endblock %}{% endblock %}</h2>
+
+        <form class="form" method="post">
+            <div class="item">
+                <label class="label_left" for="id">利用者ID </label>
+                <input type="text" name="id" size="20" pattern="^[0-9a-zA-Z]+$" required><br>
+            </div>
+
+            <div class="item">
+                <label class="label_left" for="password">パスワード </label>
+                <input type="password" name="password" minlength="6" required><br>
+            </div>
+
+            <div class="btns">
+                <input type="submit" value="ログイン">
+            </div>
+            <p class="center"><a href="{{ url_for('newmember') }}">新規登録はこちら</a></p>
+        </form>
+        
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{% block title %}{% block title2 %}ログアウト{% endblock %}{% endblock %}</h2>
+
+    <div class="center">
+    <p class="margin">ログアウトが完了しました。</p><br>
+    <a href="{{ url_for('top') }}">TOPページへ</a>
+    </div>
+{% endblock %}
