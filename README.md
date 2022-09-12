@@ -2,9 +2,11 @@
 これは、成果物（と言わず、ファイルなんでも）をアップロード・公開・ダウンロードできるアプリケーションです。
 ※はじめて作品を公開するので、至らない点はご了承ください。
 
+# 主な機能
+
 # 環境
--Python 3.10
--Flask 2.2.2
--Jinja2 3.1.2
--psycopg2-binary 2.9.3
--PostgreSQL 14.5
+- Python 3.10
+- Flask 2.2.2
+- Jinja2 3.1.2
+- psycopg2-binary 2.9.3
+- PostgreSQL 14.5
